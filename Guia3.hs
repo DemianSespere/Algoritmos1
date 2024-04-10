@@ -1,16 +1,16 @@
 doubleMe :: Int -> Int
 doubleMe x = x + x
 --------------------------------
-f n | n == 1 = 8
-    | n == 4 = 131
-    | n == 16 = 16
-    | otherwise = error "Elija un numero entre 1, 4 o 16"
+f n     | n == 1 = 8
+        | n == 4 = 131
+        | n == 16 = 16
+        | otherwise = error "Elija un numero entre 1, 4 o 16"
 --------------------------------
 g :: Int -> Int
-g n | n == 8 = 16
-    | n == 16 = 4
-    | n == 131 = 1
-    | otherwise = error "Elija un numero entre 8, 16 o 131"
+g n    | n == 8 = 16
+       | n == 16 = 4
+       | n == 131 = 1
+       | otherwise = error "Elija un numero entre 8, 16 o 131"
 --------------------------------
 h :: Int -> Int
 h n = f(g n)
@@ -21,8 +21,8 @@ maximo3 x y z   |x >= y && x>= z = x
                 |otherwise = z
 --------------------------------
 absoluto :: Int-> Int
-absoluto x  | x>0 = x
-            | otherwise = (-x)
+absoluto x      | x>0 = x
+                | otherwise = (-x)
 digitoUnidades :: Int -> Int
 digitoUnidades x = mod (absoluto x) 10
 --------------------------------
@@ -58,11 +58,11 @@ posPrimerPar (x,y,z)    | mod (absoluto x) 2 == 0 = 1
                         | mod (absoluto z) 2 == 0 = 3
                         | otherwise = 4
 --------------------------------
-crearPar :: [Char] -> [Char]  -> ([Char],[Char])
-crearPar [x] [y] =([x],[y])
+crearPar :: a -> b  -> (a,b)
+crearPar x y =(x,y)
 --------------------------------
-invertir :: ([Char],[Char])  -> ([Char],[Char])
-invertir ([x],[y]) =([y],[x])
+invertir :: (a,b)  -> (b,a)
+invertir (x,y) =(y,x)
 --------------------------------
 ff :: Int -> Int
 ff n    | n <= 7 = n^2
