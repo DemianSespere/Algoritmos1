@@ -21,8 +21,8 @@ maximo3 x y z   |x >= y && x>= z = x
                 |otherwise = z
 --------------------------------
 absoluto :: Int-> Int
-absoluto x | x>0 = x
-           | otherwise = (-x)
+absoluto x  | x>0 = x
+            | otherwise = (-x)
 digitoUnidades :: Int -> Int
 digitoUnidades x = mod (absoluto x) 10
 --------------------------------
@@ -43,20 +43,20 @@ sumaTerna :: (Float,Float,Float) -> Float
 sumaTerna (x,y,z) = x + y + z
 --------------------------------
 sumarSoloMultiplos :: (Int,Int,Int) -> Int -> Int
-sumarSoloMultiplos (x,y,z) n | mod (absoluto x) n == 0 && mod (absoluto y) n == 0 && mod (absoluto z) n == 0 = x + y + z
-                             | mod (absoluto x) n == 0 && mod (absoluto y) n == 0 = x + y 
-                             | mod (absoluto x) n == 0 && mod (absoluto z) n == 0 = x + z
-                             | mod (absoluto z) n == 0 && mod (absoluto y) n == 0 = z + y  
-                             | mod (absoluto x) n == 0 = x
-                             | mod (absoluto y) n == 0 = y
-                             | mod (absoluto z) n == 0 = z
-                             | otherwise = 0
+sumarSoloMultiplos (x,y,z) n    | mod (absoluto x) n == 0 && mod (absoluto y) n == 0 && mod (absoluto z) n == 0 = x + y + z
+                                | mod (absoluto x) n == 0 && mod (absoluto y) n == 0 = x + y 
+                                | mod (absoluto x) n == 0 && mod (absoluto z) n == 0 = x + z
+                                | mod (absoluto z) n == 0 && mod (absoluto y) n == 0 = z + y  
+                                | mod (absoluto x) n == 0 = x
+                                | mod (absoluto y) n == 0 = y
+                                | mod (absoluto z) n == 0 = z
+                                | otherwise = 0
 --------------------------------
 posPrimerPar :: (Int,Int,Int) -> Int
-posPrimerPar (x,y,z) | mod (absoluto x) 2 == 0 = 1
-                     | mod (absoluto y) 2 == 0 = 2
-                     | mod (absoluto z) 2 == 0 = 3
-                     | otherwise = 4
+posPrimerPar (x,y,z)    | mod (absoluto x) 2 == 0 = 1
+                        | mod (absoluto y) 2 == 0 = 2
+                        | mod (absoluto z) 2 == 0 = 3
+                        | otherwise = 4
 --------------------------------
 crearPar :: [Char] -> [Char]  -> ([Char],[Char])
 crearPar [x] [y] =([x],[y])
@@ -65,19 +65,22 @@ invertir :: ([Char],[Char])  -> ([Char],[Char])
 invertir ([x],[y]) =([y],[x])
 --------------------------------
 ff :: Int -> Int
-ff n | n <= 7 = n^2
-     | n > 7 = (2*n)-1
+ff n    | n <= 7 = n^2
+        | n > 7 = (2*n)-1
 --------------------------------
 gg :: Int -> Int
-gg n | mod (absoluto n) 2 == 0 = div n 2 
-     | otherwise = (3*n)+1
+gg n    | mod (absoluto n) 2 == 0 = div n 2 
+        | otherwise = (3*n)+1
 --------------------------------
 todosMenores :: (Int,Int,Int) -> Bool
 todosMenores (x,y,z) = ff x > gg x && ff y > gg y && ff z > gg z 
 --------------------------------
 absf :: Float -> Float
-absf x | x>0 = x
-       | otherwise = (-x)
+absf x  | x>0 = x
+        | otherwise = (-x)
 --------------------------------
 distanciaManhattan :: (Float,Float,Float) -> (Float,Float,Float) -> Float
 distanciaManhattan (a,b,c) (d,e,f) = absf(a-d)+absf(b-e)+absf(c-f)
+--------------------------------
+estanRelacionados :: Int -> Int -> Bool
+estanRelacionados a b = a^2+a*b*div(-a)b == 0
