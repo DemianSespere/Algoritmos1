@@ -7,10 +7,10 @@ f n     | n == 1 = 8
         | otherwise = error "Elija un numero entre 1, 4 o 16"
 --------------------------------
 g :: Int -> Int
-g n    | n == 8 = 16
-       | n == 16 = 4
-       | n == 131 = 1
-       | otherwise = error "Elija un numero entre 8, 16 o 131"
+g n     | n == 8 = 16
+        | n == 16 = 4
+        | n == 131 = 1
+        | otherwise = error "Elija un numero entre 8, 16 o 131"
 --------------------------------
 h :: Int -> Int
 h n = f(g n)
@@ -84,3 +84,11 @@ distanciaManhattan (a,b,c) (d,e,f) = absf(a-d)+absf(b-e)+absf(c-f)
 --------------------------------
 estanRelacionados :: Int -> Int -> Bool
 estanRelacionados a b = a^2+a*b*div(-a)b == 0
+--------------------------------
+sumaUltimosDosDigitos :: Int -> Int
+sumaUltimosDosDigitos x = mod (absoluto x) 10 + mod (div (absoluto x) 10) 10
+--------------------------------
+comparar :: Int -> Int -> Int
+comparar a b    | sumaUltimosDosDigitos(a) < sumaUltimosDosDigitos(b) = 1
+                | sumaUltimosDosDigitos(a) > sumaUltimosDosDigitos(b) = (-1)
+                | otherwise = 0
